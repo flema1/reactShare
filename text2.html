@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React JS</title>
+</head>
+<body>
+    <p contenteditable="true">This is a paragraph. It is editable. Try to change this text.</p>
+                   
+    <div id="app"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/babel">
+    var ContentEditable = React.createClass({
+    render: function(){
+        return <div 
+            onInput={this.emitChange} 
+            onBlur={this.emitChange}
+            contentEditable
+            dangerouslySetInnerHTML={{__html: this.props.html}}></div>;
+    },
+
+    shouldComponentUpdate: function(nextProps){
+        return nextProps.html !== this.getDOMNode().innerHTML;
+    },
+
+    emitChange: function(){
+        var html = this.getDOMNode().innerHTML;
+        if (this.props.onChange && html !== this.lastHtml) {
+            this.props.onChange({
+                target: {
+                    value: html
+                }
+            });
+        }
+        this.lastHtml = html;
+    }
+});
+
+        var HelloComponent = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                    <h1>Hello, World!</h1>
+                    <ContentEditable>
+                    </ContentEditable>
+                      </div>
+                )
+            }
+        })
+        ReactDOM.render(<HelloComponent />, document.querySelector('#app'))
+    </script>
+</body>
+</html>
