@@ -78,12 +78,12 @@ app.listen(PORT, function() {
 
 //timestamp 
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
 
 
-io.on('connection', function(client){
-  console.log("new connection from " + client.id);
+// io.on('connection', function(client){
+//   console.log("new connection from " + client.id);
 
   //  client.on('subscribeToTimer', (interval) => {
   //  console.log('client is subscribing to timer with interval ', interval);
@@ -97,14 +97,48 @@ io.on('connection', function(client){
   //  socket.on('disconnect', () => {
   //   console.log('user disconnected');
   // });
+  // io.on("send", function(event) {
+  //   console.log("got an event!");
+  //   console.log(event);
+  //   event.broadcast.emit("message-from-friend", event);
+  // });
 
-client.on("send", function(event) {
-    console.log("got an event!");
-    console.log(event);
-    client.broadcast.to(event.id).emit("message-from-friend", event);
-  });
 
 
-});
+// });
 
-server.listen(3001);
+// server.listen(3001);
+
+
+ 
+ var server = require('http').createServer(app);
+ var io= require('socket.io')(server);
+ 
+ server.listen(3001);
+
+ 
+ io.on('connection', function(socket) {
+
+  //socket.join('some room');
+
+
+   console.log("new connection from " + socket.id);
+   socket.on("send", function(event) {
+     console.log("got an event!");
+     console.log(event);
+     socket.broadcast.emit("message-from-friend", event);
+     
+
+   });
+
+ //socket.disconnect();
+  // socket.on('disconnect', function () {
+  //               socket.removeAllListeners('send message');
+  //               socket.removeAllListeners('disconnect');
+  //               socket.removeAllListeners('connection');
+  //           });
+
+  
+
+ });
+ 
