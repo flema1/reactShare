@@ -128,7 +128,13 @@ app.listen(PORT, function() {
      console.log(event);
      socket.broadcast.emit("message-from-friend", event);
      
-
+   });
+   socket.on("share", function(data) {
+     console.log("got a  share!");
+   
+     console.log(data.incoming +" // "+data.current);
+     socket.broadcast.emit("share-from-peer", data.current);
+     
    });
 
  //socket.disconnect();
