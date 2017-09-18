@@ -16,14 +16,15 @@ import io from 'socket.io-client';
 class App extends Component {
  constructor(props) {
     super(props);
-     this.socket = io('http://localhost:3001');
+    
+      this.socket = io('http://localhost:3001');
      this.socket.on("message-from-friend", function(text){
-     console.log('from server', text)
+      console.log('from server', text)
       });
 
      this.state = {
          html:'&lt;h1&gt;Display Box&lt;h1&gt',
-         //timestamp: 'no timestamp yet'
+         timestamp: 'no timestamp yet'
     }
 
     this.handleLoad = this.handleLoad.bind(this);
@@ -40,6 +41,7 @@ class App extends Component {
   //alert("bob");
  }
  onChange(event){
+   
     console.log( "event.target.value")
     this.setState({html: event.target.value});
     console.log (this.state.html + "www")
@@ -48,7 +50,10 @@ class App extends Component {
 
 
 handleClick(){
-        messenger(textToSend);       
+        let textArea = document.querySelector("textarea");
+        var textToSend = textArea.value;
+        this.socket.emit('send', textToSend)
+        //  messenger(textToSend);       
 }
 
 
