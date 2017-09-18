@@ -15,12 +15,12 @@ class ContentEditable extends Component {
     window.addEventListener('load', this.handleLoad);
     const element = ReactDOM.findDOMNode(this);
     console.log(element);
-    alert(element);
+    //alert(element);
  }
  
 
  handleLoad() {
-  alert("bobxs1");
+  //alert("bobxs1");
  }
 
  shouldComponentUpdate(nextProps){
