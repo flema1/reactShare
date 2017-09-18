@@ -42,7 +42,7 @@ class ContentEditable extends Component {
         // console.log (ReactDOM.findDOMNode(this).children)
 
         if (this.props.onChange && html !== this.lastHtml) {
-            //console.log (html); 
+            console.log (html); 
 
 
 //              var wrapper= document.createElement('div');
