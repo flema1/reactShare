@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-
+// import Document, { Html, Head, Body, App, Footer } from 'react-document'
+ 
 //import createFragment from 'react-addons-create-fragment'; // ES6
 
 class Display extends Component {
@@ -77,9 +78,10 @@ class Display extends Component {
  render() {
     
     return (
-        <div className="display"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }> 
-         
-        </div>  
+     
+        <div 
+            className="display"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }> 
+         </div>
     )
   }
 }
