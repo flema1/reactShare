@@ -3,32 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 import ReactDOM from 'react-dom'
 //import { subscribeToTimer } from './components/api';
-import { messenger } from './components/api2';
+// import { messenger } from './components/api2';
 
 import ContentEditable from './components/ContentEditable'
 import Display from './components/Display'
-// const io = require('socket.io-client')  
-// const socket = io()  
+import io from 'socket.io-client';
+  
+
 
 
 
 class App extends Component {
  constructor(props) {
     super(props);
-  //    subscribeToTimer((err, timestamp) => this.setState({ 
-  //   timestamp 
-  // }));
-    
-    
+     this.socket = io('http://localhost:3001');
+     this.socket.on("message-from-friend", function(text){
+     console.log('from server', text)
+      });
 
      this.state = {
          html:'&lt;h1&gt;Display Box&lt;h1&gt',
-         timestamp: 'no timestamp yet'
+         //timestamp: 'no timestamp yet'
     }
 
     this.handleLoad = this.handleLoad.bind(this);
     this.onChange = this.onChange.bind(this);
     this.handleClick= this.handleClick.bind(this);
+    
  }
 
  componentDidMount() {
@@ -36,7 +37,7 @@ class App extends Component {
  }
 
  handleLoad() {
-  alert("bob");
+  //alert("bob");
  }
  onChange(event){
     console.log( "event.target.value")
@@ -47,10 +48,7 @@ class App extends Component {
 
 
 handleClick(){
-
-        let textArea = document.querySelector("textarea");
-        var textToSend = textArea.value;
-         messenger(textToSend);       
+        messenger(textToSend);       
 }
 
 
