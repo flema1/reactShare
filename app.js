@@ -24,6 +24,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+});
+
 // static files
 app.use(express.static('public'));
 
@@ -44,16 +49,19 @@ app.listen(PORT, function() {
 //   res.send('We are live!');
 // });
 
-// const reactShareRouter = require('./routes/reactShare-routes');
-// app.use('/rShare', reactShareRouter);
+const reactShareRouter = require('./routes/reactShare-routes');
+app.use('/rShare', reactShareRouter);
 
+const authRoutes = require('./routes/auth-routes');
+app.use('/auth', authRoutes);
+const userRoutes = require('./routes/user-routes');
+app.use('/user', userRoutes);
 
-
-// app.use('*', (req, res) => {
-//   res.status(400).json({
-//     message: 'Endpoint not found!',
-//   });
-// });
+app.use('*', (req, res) => {
+  res.status(400).json({
+    message: 'Endpoint not found!',
+  });
+});
 
 
 // var server = require('http').createServer(app);
