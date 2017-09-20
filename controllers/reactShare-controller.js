@@ -34,24 +34,9 @@ reactShareController.single = (req, res) => {
     });
 };
 
-// reactShareController.show = (req, res) => {
-//    console.log("  we are in reactShareController.show" + req.params.id); 
-//   Share.findAll()
-//     .then(code => {
-//     console.log(code);
-//     res.json({
-//       data: code
-//     })
-//     console.log("successful code show"); 
-//     }).catch(err => {
-//       console.log(err);
-//       res.status(500).json({ err });
-//     });
-// }
-
 
 reactShareController.save =(req,res ) =>{
-   console.log("  we are in reactShareController.save"); 
+   console.log("  we are in reactShareController.save "  +req.body.home_user); 
   Share.create({
     home_user: req.body.home_user,
     peer_user: req.body.peer_user,
@@ -103,10 +88,6 @@ reactShareController.destroy = (req, res) => {
       res.status(500).json({ err });
     });
 };
-
-
-
-
 
 
 module.exports = reactShareController;
