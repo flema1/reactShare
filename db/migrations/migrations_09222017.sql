@@ -1,4 +1,4 @@
-DROP DATABASE reactshare_dev;
+-- DROP DATABASE reactshare_dev;
 CREATE DATABASE reactshare_dev;
  \c reactshare_dev;
 
