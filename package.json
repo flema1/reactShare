@@ -10,7 +10,8 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "debugger": "DEBUG=*:* nodemon app.js",
-    "seed": "node ./bin/seed"
+    "seed": "node ./bin/seed",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "all": "0.0.0",
