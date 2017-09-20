@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-// import Document, { Html, Head, Body, App, Footer } from 'react-document'
- 
-//import createFragment from 'react-addons-create-fragment'; // ES6
 
 class Display extends Component {
   constructor() {
@@ -11,8 +8,7 @@ class Display extends Component {
          playing: false,
     }
   
-    // this.emitChange = this.emitChange.bind(this);
-    // this.handleLoad = this.handleLoad.bind(this);
+
     this.printInput=this.printInput.bind(this);
     this.insertNodes=this.insertNodes.bind(this);
  }
@@ -25,54 +21,19 @@ class Display extends Component {
  
 
  handleLoad() {
-  alert("bobxs1");
+  //alert("bobxs1");
  }
  printInput(input){
     console.log("hihihihi"+ input.innerHTML)
  }
 
  shouldComponentUpdate(nextProps){
-
      return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
     }
 
-    // emitChange(){
-    //     var html = ReactDOM.findDOMNode(this).innerHTML;
-    //     var d = document.createElement('h1').innerHTML
-    //     d= ReactDOM.findDOMNode(this)
-    //     console.log(d.firstChild);
-    //     //var p= document.createElement(d.firstChild)
-    //     //console.log (html.toHtmlObject);
-    //     // var children = element.childNodes;
-    //     var children = d.childNodes;
-    //     children.forEach(function(item){
-    //     console.log(item.firstChild);
-    //     });
-    //     console.log (ReactDOM.findDOMNode(this).children)
-    //     if (this.props.onChange && html !== this.lastHtml) {
-    //         console.log (html); 
-    //         this.props.onChange({
-    //             target: {
-    //                 value: html
-    //             }
-    //         });
-    //     }
-    //     this.lastHtml = html;
-    // }
-    
-
-
-
 
   insertNodes(){
-        // var div = document.createElement('div');
-        //     div.innerHTML = this.props.inputHTML; // HTML string HTML
-        // console.log (div) 
-      
-     return  this.props.inputHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>') ;
-       
-
-        
+     return  this.props.inputHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>') ;     
   } 
 
  render() {
