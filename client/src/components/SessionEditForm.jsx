@@ -65,30 +65,17 @@ class SessionEditForm extends Component {
   onChange(event){
     console.log( "event.target.value")
     this.setState({updated_code: event.target.value});
-    //this.socket.emit('share', {incoming:event.target.value, current:this.state.html})
 }
 
 
   render() {
     return (
-      <div className="edit">
-        <form onSubmit={this.handleFormSubmit}>
-        <label>
-            {/*<input
-              type="text"
-              placeholder="code"
-              name="code"
-              value={this.state.code}
-              onChange={this.handleInputChange}
-            />*/}
-          
-          </label>
-          <ContentEditable onChange={this.onChange} html={this.state.code}/>
-          <input type="submit" value="Submit!" />
-        </form>
-        {this.state.fireRedirect
-          ? <Redirect push to={`/session/${this.state.newId}`} />
-          : ''}
+      <div className="content-edit">
+            <form onSubmit={this.handleFormSubmit}>
+                <ContentEditable onChange={this.onChange} html={this.state.code}/>
+                <input type="submit" value="Update" />
+            </form>
+                {this.state.fireRedirect ? <Redirect push to={'/saved'} /> : ''}
       </div>
     );
   }
