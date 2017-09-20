@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -23,26 +25,148 @@
   to { transform: rotate(360deg); }
 }
 
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Catamaran');
+
+.home{
+    height: 745px;
+    width: 100%;
+    background-image: url("https://www.iasplus.com/en-us/images/responsive/primary/full-bleed/computer-coding-green-screen/image");
+}
+
 
 #editbox{
-  background: red;
+    background: red;
 }
 
 
 #display{
-  background: blue;
+    background: blue;
 }
 
 .editField{
-  background: lightcyan;
-  height: 250px; 
-  overflow: scroll;
-
+    height: 250px; 
+    overflow: scroll;
+    font-family: 'Source Code Pro', monospace;
+    margin-top: -1px;
+    color: #ffffff;
+    border-style:solid;
+    border-color:#01b7ee;
 }
 
 .display{
-  background: palegoldenrod;
-  height: 250px; 
-  overflow: scroll;
+    background: black;
+    height: 250px; 
+    overflow: scroll;
+    border-style:solid;
+    border-color:#01b7ee;
+    color: white;
+}
 
+.display-saved{
+    background: black;
+    height: 250px; 
+    overflow: scroll;
+    border-style:solid;
+    border-color:#d6ff00;
+    color: white;
+}
+
+
+.main-nav {
+    background: black;
+    width: 100%; 
+}
+
+.sub-nav{
+    display: flex;
+    color: #35df79;
+    list-style: none;
+}
+
+.nav-ul {
+    flex: 1;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-ul li a {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: white;
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-family: 'Catamaran', sans-serif;
+}
+
+.nav-ul li a:hover {
+    font-weight: 700;
+}
+
+.log-out li span a{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+.room{
+  background: black;
+  height: 745px;
+  width: 100%;
+  padding-top: 130px;
+}
+.SavedSessions{
+  background: black;
+  height: 100%;
+  width: 100%;
+  padding-top: 130px;
+}
+button{
+  border: none;
+  color: #01b7ee;
+  background: black;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#see-more, #edit, .inner span{
+  margin-top: 5px;
+  color: #d6ff00;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.display-saved a{
+  color: skyblue;
+}
+
+.inner{
+  margin-top: -25px;
+  padding-top: 100px;
+  background: black;
+  height: 100vh;
+
+}
+
+
+
+.content-edit{
+   margin-top: -25px;
+   padding-top: 100px;
+   background: black;
+   height: 100vh;
+
+}
+
+.content-edit input{
+  border: none;
+  color: #01b7ee;
+  background: black;
+  font-size: 30px;
+  cursor: pointer;
 }
