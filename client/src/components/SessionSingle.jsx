@@ -43,22 +43,15 @@ class SessionSingle extends Component {
     if (this.state.apiDataLoaded) {
       return (
         <div className="inner">
-          
-          <div className="info">
-         
             <h1>home user: {this.state.session.home_user}</h1>
-            {/*<p> code: {this.state.session.code}</p>*/}
-              <DisplaySaved  className="display" inputHTML={ this.state.session.code }/>
-            
+            <DisplaySaved  className="display" inputHTML={ this.state.session.code }/>
+
             <div className="links">
-         
-              <Link to={`/edit/${this.props.match.params.id}`}>Edit</Link>
-              <span onClick={this.deletesession}>Delete</span>
-              {this.state.fireRedirect
-                ? <Redirect push to="/session" />
-                : ''}
+                <Link id="edit" to={`/edit/${this.props.match.params.id}`}>Edit</Link>
+                <span onClick={this.deletesession}>Delete</span>
+                {this.state.fireRedirect ? <Redirect push to="/saved" /> : ''}
             </div>
-          </div>
+
         </div>
       )
     } else return <p className="loading">Loading...</p>
@@ -68,9 +61,7 @@ class SessionSingle extends Component {
   render() {
     return (
       <div className="session-single">
-        {this.rendersessionOrLoading()}
-     
-           
+            {this.rendersessionOrLoading()}
       </div>
     )
   }
