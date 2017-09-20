@@ -60,11 +60,6 @@ Share.findById = (id) => {
     WHERE id = $1
   `, [id])
 }
-
-
-
-
-
 module.exports = Share;
 
 

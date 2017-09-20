@@ -33,8 +33,7 @@ app.use(function (req, res, next) {
 app.use(express.static('public'));
 
 
-//Express app set up 
-//setting up port & listen 
+
  const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, function() {
@@ -45,9 +44,6 @@ app.listen(PORT, function() {
 
 
 
-// app.get('/', (req, res) => {
-//   res.send('We are live!');
-// });
 
 const reactShareRouter = require('./routes/reactShare-routes');
 app.use('/rShare', reactShareRouter);
@@ -64,60 +60,6 @@ app.use('*', (req, res) => {
 });
 
 
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
-
-
-// io.on('connection', function(socket){
-//   console.log("new connection from " + socket.id);
-  
-//   io.on("send", function(event) {
-//     console.log("got an event!");
-//     console.log(event);
-//     socket.broadcast.emit("message-from-friend", event);
-//   });
-
-//   //  socket.on('disconnect', () => {
-//   //   console.log('user disconnected');
-//   // });
-// });
-
-// server.listen(3001);
-
-//timestamp 
-
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
-
-
-// io.on('connection', function(client){
-//   console.log("new connection from " + client.id);
-
-  //  client.on('subscribeToTimer', (interval) => {
-  //  console.log('client is subscribing to timer with interval ', interval);
-
-
-  //   setInterval(() => {
-  //     client.emit('timer', new Date());
-  //   }, interval);
-
-  // });
-  //  socket.on('disconnect', () => {
-  //   console.log('user disconnected');
-  // });
-  // io.on("send", function(event) {
-  //   console.log("got an event!");
-  //   console.log(event);
-  //   event.broadcast.emit("message-from-friend", event);
-  // });
-
-
-
-// });
-
-// server.listen(3001);
-
-
  
  var server = require('http').createServer(app);
  var io= require('socket.io')(server);
@@ -128,7 +70,6 @@ app.use('*', (req, res) => {
  io.on('connection', function(socket) {
 
   //socket.join('some room');
-
 
    console.log("new connection from " + socket.id);
    socket.on("send", function(event) {
