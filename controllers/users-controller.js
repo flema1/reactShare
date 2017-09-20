@@ -53,4 +53,23 @@ usersController.create = (req, res) => {
   });
 }
 
+
+
+
+usersController.get_username = (req, res) => {
+  console.log (" usersController. get username  ---->");
+  User.findByToken(req.body.token)
+    .then(data => {
+         console.log("see below");
+        console.log(data); 
+      res.json({
+        message: 'ok',
+        data: data,
+      });
+    }).catch(err => {
+    console.log(err);
+    res.status(500).json({ err });
+  });
+}
+
 module.exports = usersController;

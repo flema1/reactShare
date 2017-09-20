@@ -26,4 +26,12 @@ User.findUserEnvi = id => {
   `, [id]);
 };
 
+User.findByToken = token => {
+   console.log (" users model. get username  ---->");
+  return db.oneOrNone(`
+    SELECT username FROM users
+    WHERE token = $1
+  `, [token]);
+};
+
 module.exports = User;
