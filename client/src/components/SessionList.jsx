@@ -14,15 +14,11 @@ class SessionList extends Component {
       apidata:null,
       apidataLoaded:false
     }
-  
-    this.renderSaved = this.renderSaved.bind(this);
-   
-    
+    this.renderSaved = this.renderSaved.bind(this); 
  }
  
   componentDidMount() {
-
-    axios('/rShare/show/100', {method: 'GET'})
+     axios(`/rShare/show/${this.props.username}`, {method: 'GET'})
       .then(res => {
          console.log(res.data.data);
         this.setState({
@@ -39,14 +35,9 @@ class SessionList extends Component {
            console.log('here')
            return this.state.apidata.map((saved_code, index) => {
                  return (  
-                   <div key={index}>    
-                       
-                       {/*<h3>{saved_code.id} </h3>
-                        <h3>{saved_code.code} </h3>*/}
-                      
-                       {/* <button onClick= {()=>this.handleClickSave()}>Save</button> */}
-                          <Session key={saved_code.id} session={saved_code} />
-                   </div>
+                        <div className="session-outer" key={index}>    
+                                <Session key={saved_code.id} session={saved_code} />
+                        </div>
                         );
                      })
 
@@ -54,9 +45,9 @@ class SessionList extends Component {
 
    render() {
            return (
-                 <div className="searchpage">
-                  <h2>Your Saved Peer Coding Sessions</h2>
-                     {(this.state.apidataLoaded) ? this.renderSaved() : <p>Loading...</p>}
+                 <div className="SavedSessions">
+                      <h2>Your Saved Peer Coding Sessions</h2>
+                      {(this.state.apidataLoaded) ? this.renderSaved() : <p>Loading...</p>}
                  </div>
        )
    }
