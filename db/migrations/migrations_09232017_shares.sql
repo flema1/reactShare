@@ -10,11 +10,6 @@ CREATE TABLE IF NOT EXISTS shares (
   _date     TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
 
--- DROP TABLE users_shares;
--- CREATE TABLE IF NOT EXISTS users_shares (
---   id BIGSERIAL PRIMARY KEY,
---   user_id INTEGER REFERENCES users(id),
---   code_id INTEGER REFERENCES shares(id)
--- );
+
 
 
