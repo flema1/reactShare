@@ -6,20 +6,21 @@ import Auth from '../modules/Auth';
 const Nav = (props) => {
   return (
     <header>
-      <nav>
-        <ul>
+      <nav className="main-nav">
+        <div className="sub-nav">
+        <ul className="nav-ul">
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-              <Link to="/room">Room</Link>
+              <Link to="/room">Code Share</Link>
             </li>
              <li>
               <Link to="/saved">Saved</Link>
             </li>
         </ul>
         {!Auth.isUserAuthenticated() ? (
-          <ul>
+          <ul className="nav-ul">
             <li>
               <Link to="/login">Login</Link>
             </li>
@@ -28,12 +29,13 @@ const Nav = (props) => {
             </li>
           </ul>
         ) : (
-          <ul>
+          <ul className="log-out">
             <li>
               <span className="logout" onClick={props.logoutUser}>Log Out</span>
             </li>
           </ul>
         )}
+        </div>
       </nav>
     </header>
   );
