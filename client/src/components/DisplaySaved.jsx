@@ -16,69 +16,28 @@ class Display extends Component {
  componentDidMount() {
     window.addEventListener('load', this.handleLoad);
     const element = ReactDOM.findDOMNode(this);
-    console.log(element + "display has loaded");
-
+    //console.log(element + "display has loaded");
  }
  
 
  handleLoad() {
-  alert("bobxs1");
+  //alert("displaysaved component loaded");
  }
  printInput(input){
-    console.log("hihihihi"+ input.innerHTML)
+    console.log("input html"+ input.innerHTML)
  }
 
  shouldComponentUpdate(nextProps){
-
      return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
     }
 
-    // emitChange(){
-    //     var html = ReactDOM.findDOMNode(this).innerHTML;
-    //     var d = document.createElement('h1').innerHTML
-    //     d= ReactDOM.findDOMNode(this)
-    //     console.log(d.firstChild);
-    //     //var p= document.createElement(d.firstChild)
-    //     //console.log (html.toHtmlObject);
-    //     // var children = element.childNodes;
-    //     var children = d.childNodes;
-    //     children.forEach(function(item){
-    //     console.log(item.firstChild);
-    //     });
-    //     console.log (ReactDOM.findDOMNode(this).children)
-    //     if (this.props.onChange && html !== this.lastHtml) {
-    //         console.log (html); 
-    //         this.props.onChange({
-    //             target: {
-    //                 value: html
-    //             }
-    //         });
-    //     }
-    //     this.lastHtml = html;
-    // }
-    
-
-
-
-
   insertNodes(){
-        // var div = document.createElement('div');
-        //     div.innerHTML = this.props.inputHTML; // HTML string HTML
-        // console.log (div) 
-      
-     return  this.props.inputHTML/*.replace(/&lt;/g, '<').replace(/&gt;/g, '>') ;*/;
-       
-
-        
+     return  this.props.inputHTML/*.replace(/&lt;/g, '<').replace(/&gt;/g, '>') ;*/; 
   } 
 
  render() {
-    
     return (
-     
-        <div 
-            className="display"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }> 
-         </div>
+         <div className="display-saved"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }></div>
     )
   }
 }
