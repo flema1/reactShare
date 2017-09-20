@@ -1,15 +1,16 @@
 const express = require('express');
 const reactShareRouter = express.Router();
+const authHelpers = require('../services/auth/auth-helpers');
 
 const reactShareController = require('../controllers/reactShare-controller');
-//reactShareRouter.get('/', reactShareController.index);
-//reactShareRouter.get('/songs',reactShareController.songs);
-//reactShareRouter.get('/', reactShareController.index);
-/*reactShareRouter.post('/', reactShareController.create);
+const shareController = require('../controllers/reactShare-controller');
 
-reactShareRouter.get('/:id', reactShareController.show);
-reactShareRouter.put('/:id', reactShareController.update);
-reactShareRouter.delete('/:id', reactShareController.destroy);*/
+reactShareRouter.post('/save', reactShareController.save);
+reactShareRouter.get('/show/:username',reactShareController.show);
+reactShareRouter.get('/session/:id',reactShareController.single);
+reactShareRouter.put('/session/:id',reactShareController.update);
+reactShareRouter.delete('/session/:id',reactShareController.destroy);
+
 
 module.exports = reactShareRouter;
 

@@ -36,11 +36,13 @@
 .editField{
   background: lightcyan;
   height: 250px; 
+  overflow: scroll;
 
 }
 
 .display{
   background: palegoldenrod;
   height: 250px; 
+  overflow: scroll;
 
 }

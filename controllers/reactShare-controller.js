@@ -1,77 +1,112 @@
-//const Newspress = require('../models/newspress');
+
+const Share = require('../models/share');
 const axios = require ("axios");
-const reactPlayerController = {};
-var userhome = require('userhome')
-var dir = require('node-dir');
-const fs = require('fs');
-// var reactPlayerLocation= path.resolve(userhome(),'Music/reactPlayer')
-// console.log(reactPlayerLocation); 
-
-var reactPlayer= '/Users/franklinl/Music/reactPlayer';
-
-reactPlayerController.songs= (req,res)=>{
-    console.log(dir.readFileSync)
-    console.log(dir.readFilesStream)
-    console.log (dir.files)
-
-var songsPaths = dir.files(reactPlayer, {sync:true});
-console.log("cgfhvbjnm" +songsPaths);
-
-var data=[]; 
-    
-let trim= function(title){
-return title.substring(0, title.length-4);
-
-}
+const reactShareController = {};
 
 
-fs.readdir(reactPlayer, (err, files) => {
-  files.forEach(file => {
-  
-    var sFileExtension = file.split('.')[file.split('.').length - 1];
-    console.log (sFileExtension);
-    console.log("title "+trim(file));
-    if (sFileExtension=="mp4"){
-         data.push({
-        name:trim(file),
-        path:reactPlayer+file 
-    });
-    }
-    //console.log (reactPlayer+file );
-   
-
- 
-  });
-
-  res.json({
-        data: data,
-  
-      });
-})
-
-
-}
-
-
-
-// match only filenames with a .txt extension and that don't start with a `.´
-
-
-
-reactPlayerController.index  = (req, res) => {
-  Newspress.userSources(req.user.id)
-    .then( sources => {
-        res.json({
-        user: req.user,
-        data: sources,
-      });
+reactShareController.show = (req, res) => {
+  console.log("  we are in reactShareController.show" + req.params.username); 
+  Share.findByUsername(req.params.username)
+    .then(data => {
+    console.log(data);
+    res.json({
+      data: data
+    })
+    console.log("successful code show"); 
     }).catch(err => {
       console.log(err);
-      res.status(500).json({err: err});
+      res.status(500).json({ err });
     });
 }
 
+reactShareController.single = (req, res) => {
+  console.log("  we are in reactShareController.single" + req.params.id); 
+  Share.findById(req.params.id)
+    .then(data => {
+      res.json({
+        message: 'ok',
+        data: data,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+};
+
+// reactShareController.show = (req, res) => {
+//    console.log("  we are in reactShareController.show" + req.params.id); 
+//   Share.findAll()
+//     .then(code => {
+//     console.log(code);
+//     res.json({
+//       data: code
+//     })
+//     console.log("successful code show"); 
+//     }).catch(err => {
+//       console.log(err);
+//       res.status(500).json({ err });
+//     });
+// }
+
+
+reactShareController.save =(req,res ) =>{
+   console.log("  we are in reactShareController.save"); 
+  Share.create({
+    home_user: req.body.home_user,
+    peer_user: req.body.peer_user,
+    code: req.body.code
+  }).then( code => {
+    console.log(code);
+    res.json({
+      data: code
+    })
+
+    console.log("successful code save"); 
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+}
+
+reactShareController.update = (req, res) => {
+  console.log("we are in reactShareController.update" + req.body.code); 
+  Share.update(
+    {
+      code: req.body.code,
+    },
+    req.params.id,
+  )
+    .then(data => {
+      res.json({
+        message: 'ok',
+        data: data,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+};
+
+reactShareController.destroy = (req, res) => {
+  console.log("we are in reactShareController.delete" + req.params.id); 
+  Share.destroy(req.params.id)
+    .then(data=> {
+      res.json({
+        message: 'ok',
+        data: data,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+};
 
 
 
-module.exports = reactPlayerController;
+
+
+
+module.exports = reactShareController;

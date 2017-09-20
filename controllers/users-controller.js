@@ -32,11 +32,12 @@ usersController.create = (req, res) => {
                         });
   User.create({
 
-        
+      
+
     username: req.body.user.username,
     email: req.body.user.email,
     password_digest: hash,
-    firstname: req.body.user.firstname,//,
+    firstname: req.body.user.name,//,
     token: token
     //lastname: req.body.lastname,
   }).then(user => {

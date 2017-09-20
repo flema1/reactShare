@@ -15,12 +15,11 @@ import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import Room from './components/Room';
-// import Dash from './components/Dash';
+import SessionList from './components/SessionList';
 
-//import Home from './components/Home';
-
-//import { subscribeToTimer } from './components/api';
-// import { messenger } from './components/api2';
+import SessionSingle from './components/SessionSingle';
+// import SessionAddForm from './components/SessionAddForm';
+import SessionEditForm from './components/SessionEditForm';
 
 import ContentEditable from './components/ContentEditable'
 import Display from './components/Display'
@@ -32,7 +31,7 @@ import io from 'socket.io-client';
 
 class App extends Component {
 
-     constructor(props) {
+    constructor(props) {
     super(props);
 
     this.state = {
@@ -46,13 +45,19 @@ class App extends Component {
       registerPassword: '',
       registerEmail: '',
       registerName: '',
+      username:'',
+      // apiData:[],
+      // apiDataLoaded: false,
+      // _redirect: false,
+      // currentPage:'/'
+
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-   
+    //this.handleClickShow = this.handleClickShow.bind(this);
     this.resetFireRedirect = this.resetFireRedirect.bind(this);
   }
  
@@ -111,6 +116,7 @@ handleInputChange(e) {
         Auth.authenticateToken(res.data.token);
         this.setState({
           auth: Auth.isUserAuthenticated(),
+          username: res.data ,
           loginUserName: '',
           loginUserPassword: '',
         })
@@ -181,6 +187,23 @@ handleInputChange(e) {
     })
   }
 
+// handleClickShow(){
+//  console.log("show show");
+//   axios.get('/rShare/show/100')
+//   .then((res) => {
+//     this.setState({
+//       apiData:res.data,
+//       apiDataLoaded: true,
+//       currentPage: 'results',
+//       _redirect: true
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+// }
+
   render(){
     return (
          <Router>
@@ -206,7 +229,22 @@ handleInputChange(e) {
             render={() =>
               this.state.auth ? (
                 <Room shouldFireRedirect={this.state.shouldFireRedirect}
+                handleClickShow={this.handleClickShow}
                 />
+              ) : (
+                <Redirect to="/login" />
+              )}
+          />
+            {/*<Route exact path="/session" component={Session} />*/}
+            <Route exact path="/session/:id" component={SessionSingle} />
+            {/*<Route exact path="/add" component={SessionAddForm} />*/}
+            <Route exact path="/edit/:id" component={SessionEditForm} />
+          <Route
+            exact
+            path="/saved"
+            render={() =>
+              this.state.auth ? (
+                <SessionList />
               ) : (
                 <Redirect to="/login" />
               )}
@@ -230,18 +268,9 @@ handleInputChange(e) {
                 <Redirect to="/dash" />
               )}
           />
-        
-          {/*<textarea>type here</textarea>
-          <button id="send" onkeyup= {()=>this.handleClick()}>send</button>
-
-          <ContentEditable onChange={this.onChange} html={this.state.shared_code}/>
-          <Display inputHTML={*/}
-            {/*//this.state.finalHTML
-            //this.state.html
-            //this.code()
-            //this.state.shared_code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-            }/> 
-          This is the timer value: {this.state.shared_code.replace(/&lt;/g, '<').replace(/&gt;/g, '>') }*/}
+      
+    
+          {/*This is your username: {this.state.loginUserName}*/}
       </div>
          </Router>
     );
