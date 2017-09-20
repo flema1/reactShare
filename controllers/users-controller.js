@@ -10,12 +10,6 @@ usersController.index = (req, res) => {
   User.findUserEnvi(req.user.id)
     .then(envi => {
       console.log (envi); 
-       res.redirect('/envi/all');
-        /*res.json({
-        //user: req.user,
-        data: 'user profile route',
-        //envi: envi,
-      });*/
     }).catch(err => {
       console.log(err);
       res.status(500).json({err: err});
@@ -37,14 +31,11 @@ usersController.create = (req, res) => {
     username: req.body.user.username,
     email: req.body.user.email,
     password_digest: hash,
-    firstname: req.body.user.name,//,
+    firstname: req.body.user.name,
     token: token
     //lastname: req.body.lastname,
   }).then(user => {
     req.login(user, (err) => {
-      //console.log('no error')
-      //if (err) return next(errm,'is this an error');
-      
       console.log("sucessful register!");
       console.log (user);
     res.json({
@@ -53,8 +44,6 @@ usersController.create = (req, res) => {
         email: user.email,
         firstname: user.firstname
         });
-     //res.redirect('/user');
-      // res.redirect('/envi/all'); 
     });
 
 
