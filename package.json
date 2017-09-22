@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "all": "0.0.0",
+    "body-parser": "^1.18.1",
     "co-bcryptjs": "^0.2.0",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
