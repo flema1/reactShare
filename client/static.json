@@ -3,5 +3,6 @@
   "routes": {
     "/*.html": "index.html",
     "/route/**": "bar/baz.html"
-  }
+  },
+   "proxy": "http://localhost:3001"
 }
