@@ -53,8 +53,7 @@ handleClick(){
 
 handleClickSave(){
  console.log("save save");
-  axios.post('/rShare/save', {
-    //home_user: '100',
+  axios.post('/rShare/save', { //<-- objrect sent to the backend for saving  
     home_user: this.props.username,
     peer_user: 'Flintstone',
     code: this.state.html
