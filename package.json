@@ -8,10 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "debugger": "DEBUG=*:* nodemon app.js",
-    "seed": "node ./bin/seed",
-    "build": "react-scripts build"
+    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
   },
   "dependencies": {
     "all": "0.0.0",
