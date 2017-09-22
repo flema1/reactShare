@@ -57,12 +57,8 @@ reactShareController.save =(req,res ) =>{
 reactShareController.update = (req, res) => {
   console.log("we are in reactShareController.update" + req.body.code); 
   Share.update(
-    {
-      code: req.body.code,
-    },
-    req.params.id,
-  )
-    .then(data => {
+    {code: req.body.code},req.params.id,
+    ).then(data => {
       res.json({
         message: 'ok',
         data: data,
