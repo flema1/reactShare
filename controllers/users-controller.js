@@ -25,9 +25,6 @@ usersController.create = (req, res) => {
                             expiresIn: 604800 // 1 WEEK
                         });
   User.create({
-
-      
-
     username: req.body.user.username,
     email: req.body.user.email,
     password_digest: hash,
@@ -57,8 +54,8 @@ usersController.create = (req, res) => {
 
 
 usersController.get_username = (req, res) => {
-  console.log (" usersController. get username  ---->");
-  User.findByToken(req.body.token)
+  console.log (" usersController. get username  ---->" + req.body.token);
+  User.findByToken(req.body.token)  
     .then(data => {
          console.log("see below");
         console.log(data); 

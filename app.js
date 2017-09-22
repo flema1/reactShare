@@ -34,7 +34,7 @@ app.use(express.static('public'));
 
 
 
- const PORT = process.env.PORT || 4000;
+ const PORT = process.env.PORT || 4006;
 
 app.listen(PORT, function() {
   console.log(`listening on port ${PORT} 00`);

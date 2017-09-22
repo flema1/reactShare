@@ -20,7 +20,7 @@ class SessionList extends Component {
   componentDidMount() {
      axios(`/rShare/show/${this.props.username}`, {method: 'GET'})
       .then(res => {
-         console.log(res.data.data);
+         console.log(res.data);
         this.setState({
            apidata:res.data.data,
         apidataLoaded:true
