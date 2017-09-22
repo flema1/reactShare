@@ -1,11 +1,11 @@
 -- DROP DATABASE reactshare_dev;
-CREATE DATABASE reactshare_dev;
- \c reactshare_dev;
+-- CREATE DATABASE reactshare_dev;
+--  \c reactshare_dev;
 
 
 
 
-DROP TABLE users;
+-- DROP TABLE users;
 CREATE TABLE  users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255) UNIQUE NOT NULL,

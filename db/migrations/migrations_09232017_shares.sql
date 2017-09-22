@@ -1,5 +1,5 @@
 -- CREATE DATABASE todos_dev;
- \c reactshare_dev;
+--  \c reactshare_dev;
  
 DROP TABLE shares;
 CREATE TABLE IF NOT EXISTS shares (
