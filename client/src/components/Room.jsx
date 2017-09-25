@@ -10,7 +10,7 @@ class Room extends Component {
     super(props);
     
      
-     this.socket = io();
+     this.socket = io(window.location.hostname);
      this.socket.on("message-from-friend", function(text){
       console.log('from server', text)
     });
