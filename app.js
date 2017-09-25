@@ -66,8 +66,12 @@ app.use('*', (req, res) => {
 
 
 
+var server = https.createServer(sslOptions, app);
+// attach your socket.io server to the express server
+
+
  
- var server = require('https').createServer(app);
+ //var server = require('https').createServer(app);
  var io= require('socket.io')(server);
  
  server.listen(3001);
