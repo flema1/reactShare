@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 
 app.use(express.static('public')); // static files
 
-const PORT = process.env.PORT || 4006;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function() {
   console.log(`listening on port ${PORT} 00`);
