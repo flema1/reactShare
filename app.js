@@ -78,12 +78,12 @@ var options = {
 //var server = require('https').createServer(options, app);
 var server = require('https').createServer(options, app);
 //var server = https.createServer(options);
- var io= require('socket.io')(server);
+ var io= require('socket.io')(app);
  
 
  //var server = require('http').createServer(app);
  //var io= require('socket.io')(server);
-  server.listen(app);
+ // server.listen(app);
 //server.listen(PORT);
  
  io.on('connection', function(socket) {
