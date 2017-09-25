@@ -11,7 +11,9 @@
   },
   "scripts": {
     "start": "node app.js",
-    "deploy": "cd client && yarn build && cp -a ./build/ ../public/"
+    "deploy": "cd client && yarn build && cp -a ./build/ ../public/",
+     "dev": "nodemon app.js",
+    "debugger": "DEBUG=*:* nodemon app.js"
   },
   "dependencies": {
     "all": "0.0.0",

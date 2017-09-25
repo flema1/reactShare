@@ -61,18 +61,26 @@ app.use('*', (req, res) => {
 
  
 
+//var https = require('https'),     
+ var   fs =    require('fs');        
+
+var options = {
+    key: fs.readFileSync(__dirname + '/server.key'),
+    cert:   fs.readFileSync(__dirname+'/server.crt')
+};
+
+//io = require('socket.io').listen(server);     //socket.io server listens to https connections
+//app.listen(8895, "0.0.0.0");
 
 
-
-
-
-var server = https.createServer(sslOptions, app);
-// attach your socket.io server to the express server
-
-
- 
- //var server = require('https').createServer(app);
+//var https -
+var server = require('https').createServer(options, app);
+//var server = https.createServer(options);
  var io= require('socket.io')(server);
+ 
+ 
+ //var server = require('http').createServer(app);
+ //var io= require('socket.io')(server);
  
  server.listen(3001);
 
