@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
     database: 'adaquote_development',
     port: 5432,
     host: 'localhost',
+    https: true
   });
 } else if (process.env.NODE_ENV === 'production') {
   db = pgp(process.env.DATABASE_URL);
