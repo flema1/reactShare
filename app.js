@@ -78,10 +78,11 @@ var options = {
 
 //var https -
 //var server = require('https').createServer(options, app);
-var server = require('https').createServer(app);
+var server = require('http').createServer(app);
 //var server = https.createServer(options);
  var io= require('socket.io')(server);
  
+server.listen(process.env.PORT || 3000);
 
  //var server = require('http').createServer(app);
  //var io= require('socket.io')(server);
