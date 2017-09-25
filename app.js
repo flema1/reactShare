@@ -84,7 +84,7 @@ var server = require('https').createServer(options, app);
  //var io= require('socket.io')(server);
  
 // server.listen(3001);
-server.listen(process.env.PORT || 3001);
+server.listen(options,PORT);
  
  io.on('connection', function(socket) {
 
