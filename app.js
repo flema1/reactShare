@@ -6,7 +6,9 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+const cors = require('cors')
 const app = express();
+app.use(cors())
 
 require('dotenv').config();
 app.use(logger('dev'));
@@ -87,10 +89,10 @@ var server = require('https').createServer(options, app);
  //server.listen(3001);
 //server.listen(PORT);
  // Heroku setting for long polling
-io.configure(function () { 
-    io.set("transports", ["xhr-polling"]); 
-    io.set("polling duration", 10); 
-});
+// io.configure(function () { 
+//     io.set("transports", ["xhr-polling"]); 
+//     io.set("polling duration", 10); 
+// });
 
 
  io.on('connection', function(socket) {
