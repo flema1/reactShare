@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static('public')); // static files
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -82,8 +83,7 @@ var server = require('https').createServer(options, app);
 
  //var server = require('http').createServer(app);
  //var io= require('socket.io')(server);
- 
- server.listen(3001);
+  server.listen(app);
 //server.listen(PORT);
  
  io.on('connection', function(socket) {
