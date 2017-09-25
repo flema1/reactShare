@@ -87,7 +87,7 @@ var server = require('https').createServer(options, app);
  //var io= require('socket.io')(server);
  
  
-//server.listen(PORT);
+server.listen(PORT);
  // Heroku setting for long polling
 io.configure(function () { 
     io.set("transports", ["xhr-polling"]); 
