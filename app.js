@@ -29,12 +29,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-// static files
-app.use(express.static('public'));
+app.use(express.static('public')); // static files
 
-
-
- const PORT = process.env.PORT || 4006;
+const PORT = process.env.PORT || 4006;
 
 app.listen(PORT, function() {
   console.log(`listening on port ${PORT} 00`);
@@ -58,6 +55,13 @@ app.use('*', (req, res) => {
     message: 'Endpoint not found!',
   });
 });
+
+
+ 
+
+
+
+
 
 
  

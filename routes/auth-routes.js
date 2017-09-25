@@ -33,11 +33,12 @@ console.log ("we are in the register  test");
         });
 } );
 
+
+
 authRouter.post('/login', passport.authenticate('local'), function(req, res){
     const token = jwt.sign({data: req.user.username}, process.env.SECRET_KEY, {
                             expiresIn: 604800 // 1 WEEK
                         });
-console.log ("we are in the login test");
     res.status(200).json({
         token: token,
         username: req.user.username,
@@ -46,10 +47,8 @@ console.log ("we are in the login test");
         });
 });
 
+
 authRouter.delete('/logout', (req, res) => {
-   // console.log (req.body + "deleted");
- // req.logout();
- // res.redirect('/');
  res.status(200).json({
        info:req.body
         });
