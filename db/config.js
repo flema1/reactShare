@@ -5,8 +5,8 @@ let db;
 
 if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
   db = pgp({
-    //database: 'reactshare_dev',
-    database: 'adaquote_development',
+    database: 'reactshare_dev',
+    //database: 'adaquote_development',
     port: 5432,
     host: 'localhost',
     https: true

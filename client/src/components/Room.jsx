@@ -4,17 +4,15 @@ import ContentEditable from './ContentEditable'
 import Display from './Display'
 import io from 'socket.io-client';
 import axios from 'axios';
-var io = require('socket.io-client');
-var socket;
 
 class Room extends Component {
  constructor(props) {
     super(props);
     
-     socket = io(window.location.hostname);
-     socket.on("message-from-friend", function(text){
-     //this.socket = io(window.location.hostname);
-     //this.socket.on("message-from-friend", function(text){
+     
+     //this.socket = io();
+      this.socket = io();
+     this.socket.on("message-from-friend", function(text){
       console.log('from server', text)
     });
     
