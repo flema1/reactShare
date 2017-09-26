@@ -10,8 +10,9 @@ class Room extends Component {
     super(props);
     
      
-     //this.socket = io();
-      this.socket = io();
+    //this.socket = io();
+    // https://shrouded-harbor-91080.herokuapp.com/
+    this.socket = io();
      this.socket.on("message-from-friend", function(text){
       console.log('from server', text)
     });
