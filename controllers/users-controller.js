@@ -42,15 +42,46 @@ usersController.create = (req, res) => {
         firstname: user.firstname
         });
     });
-
-
-  }).catch(err => {
+ }).catch(err => {
     console.log(err);
     res.status(500).json({error: err});
   });
 }
 
 
+usersController.updateToken = (req, res) => {
+    console.log (" usersController.updateToken  ---->");
+    console.log(req.body + " req body");
+      for(var propt in req.body){
+    console.log(propt + ': ' + req.body);
+    }
+
+
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(req.body.password, salt);
+  const token = jwt.sign({data: req.body.username}, process.env.SECRET_KEY, {
+                            expiresIn: 604800 // 1 WEEK
+                        });
+  User.updateToken({
+    username: req.body.username,
+    token: token
+    //lastname: req.body.lastname,
+  }).then(user => {
+    req.login(user, (err) => {
+      console.log("sucessful register!");
+      console.log (user);
+    res.json({
+        token: user.token,
+        username: user.username,
+        email: user.email,
+        firstname: user.firstname
+        });
+    });
+ }).catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
+  });
+}
 
 
 usersController.get_username = (req, res) => {
@@ -58,7 +89,7 @@ usersController.get_username = (req, res) => {
   User.findByToken(req.body.token)  
     .then(data => {
          console.log("see below");
-        console.log(data); 
+         console.log(data); 
       res.json({
         message: 'ok',
         data: data,
@@ -68,5 +99,22 @@ usersController.get_username = (req, res) => {
     res.status(500).json({ err });
   });
 }
+
+
+usersController.deleteToken=(req,res)=>{
+  console.log("we are in usersController.deleteToken" + req.body); 
+  User.updateToken(req.body.body)
+    .then(data=> {
+      res.json({
+        message: 'ok',
+        data: data,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+
+};
 
 module.exports = usersController;
