@@ -34,4 +34,26 @@ User.findByToken = token => {
   `, [token]);
 };
 
+
+
+
+
+User.updateToken = user => {
+  console.log ("models-update" + user.username);
+  return db.one(
+    `
+    UPDATE users SET
+    token = $1
+    WHERE  username= $2
+    RETURNING *
+  `,
+    [user.token, user.username]
+  );
+};
+
+
+
+
+
+
 module.exports = User;
