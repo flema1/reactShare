@@ -56,7 +56,6 @@ class App extends Component {
  
  componentDidMount() {
     window.addEventListener('load', this.handleLoad);
-
     if (this.state.auth){
       axios.post('/rShare/username',{
       token:Auth.getToken()
@@ -150,8 +149,7 @@ handleInputChange(e) {
         'Authorization': `Token ${Auth.getToken()}`,
         token: Auth.getToken(),
       }
-
-    }).then(res => {
+        }).then(res => {
       console.log (res + "response");
       Auth.deauthenticateUser();
       this.setState({
