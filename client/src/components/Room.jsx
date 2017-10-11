@@ -9,9 +9,7 @@ class Room extends Component {
  constructor(props) {
     super(props);
     
-     
-    //this.socket = io();
-    // https://shrouded-harbor-91080.herokuapp.com/
+    
     this.socket = io();
      this.socket.on("message-from-friend", function(text){
       console.log('from server', text)
@@ -33,13 +31,15 @@ class Room extends Component {
          shared_code:'',
          finalHTML: 'null',
          fireRedirect: false,
-         username:this.props.username
+         username:this.props.username,
     }
 
     this.onChange = this.onChange.bind(this);
     this.handleClick= this.handleClick.bind(this);
     this.handleClickSave= this.handleClickSave.bind(this);
+   
  }
+
 
 onChange(event){
     this.setState({html: event.target.value});
