@@ -40,11 +40,11 @@ app.get('/', (req, res) => {
 
 //Express app set up 
 //setting up port & listen 
- const PORT = process.env.PORT || 4000;
+ const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, function() {
-  console.log(`listening on port ${PORT} 00`);
-});
+// app.listen(PORT, function() {
+//   console.log(`listening on port ${PORT} 00`);
+// });
 
 
 
@@ -121,14 +121,15 @@ app.use('*', (req, res) => {
 // });
 
 // server.listen(3001);
-
-
+const socketIo = require("socket.io");
+const server = require('http').createServer(app);
+const io = socketIo(server);
  
- var server = require('http').createServer(app);
- var io= require('socket.io')(server);
+// var server = require('http').createServer(app);
+// var io= require('socket.io')(server);
  
- server.listen(3001);
-
+ //server.listen(3001);
+server.listen(PORT);
  
  io.on('connection', function(socket) {
 
