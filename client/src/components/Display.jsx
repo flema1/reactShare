@@ -1,57 +1,44 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+// var Prism = require('prismjs');
 
-class Display extends Component {
+export default class Display extends Component {
   constructor() {
     super();
-    this.state = {
-         playing: false,
-    }
-  
+    this.state = { }
+    this.insertNodes = this.insertNodes.bind(this);
+  }
 
-    this.printInput=this.printInput.bind(this);
-    this.insertNodes=this.insertNodes.bind(this);
- }
- componentDidMount() {
+  componentDidMount() {
     window.addEventListener('load', this.handleLoad);
     const element = ReactDOM.findDOMNode(this);
     console.log(element + "display has loaded");
     //alert(element);
- }
- 
+  }
 
- handleLoad() {
-  //alert("bobxs1");
- }
- printInput(input){
-    console.log("hihihihi"+ input.innerHTML)
- }
+  shouldComponentUpdate(nextProps) {
+    return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
+  }
 
- shouldComponentUpdate(nextProps){
-     return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
-    }
+  insertNodes() {
+    var latest = "&#x3C;html&#x3E &#x3C;head&#x3E; &#x3C;title&#x3E;getElementById example&#x3C;/title&#x3E; &#x3C;/head&#x3E; &#x3C;body&#x3E;" + this.props.inputHTML + "&#x3C;/body&#x3E";
+    var html = latest.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    html = html.replace(/&#x3C;/g, '<').replace(/&#x3E;/g, '>');
+    console.log(typeof html + "bob");
+    return html;
+    //  var html = Prism.highlight(props.literal, Prism.languages[props.language]);
+    //return Prism.highlight(html, Prism.languages.javascript);
+  }
 
-
-  insertNodes(){
-     return  this.props.inputHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>') ;     
-  } 
-
- render() {
-    
+  render() {
     return (
-     
-        <div 
-            className="display"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }> 
-         </div>
+        <div style={{height:'100%'}}>
+          <div className="display"  dangerouslySetInnerHTML={{__html:this.insertNodes()} }>
+          </div>
+          {/*<p style={{color: 'red'}} >{eval(5+5)}</p>*/}
+        </div>
     )
   }
 }
- 
-
-export default Display;
 
 
-
-
-// https://stackoverflow.com/questions/29527309/react-0-13-this-getdomnode-equivalent-to-react-finddomnode
-//https://gist.github.com/girishso/9876306 (contenteditable basecode)
