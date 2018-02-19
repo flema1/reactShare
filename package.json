@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A peer coding app built in React.js and Express.js",
   "main": "index.js",
-  "repository": "https://github.com/flema1/ReactMusicPlayer.git",
+  "repository": "https://github.com/flema1/reactShare.git",
   "author": "Franklin Lema",
   "license": "MIT",
   "engines": {
@@ -18,9 +18,10 @@
   "dependencies": {
     "all": "0.0.0",
     "axios": "^0.16.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.1",
+    "brace": "^0.10.0",
     "co-bcryptjs": "^0.2.0",
-    "concurrently": "^3.5.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
@@ -29,7 +30,6 @@
     "express-session": "^1.15.5",
     "http": "0.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "jquery": "^3.2.1",
     "jsonwebtoken": "^8.0.1",
     "method-override": "^2.3.9",
     "morgan": "^1.8.2",
@@ -37,11 +37,14 @@
     "nodemon": "^1.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg-promise": "^6.5.1",
+    "pg": "^7.4.1",
+    "pg-promise": "^6.10.3",
+    "react-ace": "^5.4.0",
+    "react-burger-menu": "^2.1.9",
+    "react-hamburger-menu": "^1.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "socket.io": "^2.0.3",
-    "socket.io-client": "^2.0.3",
-    "socket.io-proxy": "^1.0.3"
+    "socket.io-client": "^2.0.3"
   }
 }
