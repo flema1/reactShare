@@ -6,7 +6,7 @@ import AceEditor from 'react-ace';
 
 // var snippetManager = ReactAce.require("ace/snippets").snippetManager;
 // snippetManager.insertSnippet(editor, snippet);
-class ContentEditable extends Component {
+export default class ContentEditable extends Component {
     constructor() {
         super();
         this.state = { }
@@ -114,9 +114,6 @@ class ContentEditable extends Component {
     );
   }
 }
-
-
-export default ContentEditable;
 
 /*Sources: 
  https://stackoverflow.com/questions/29527309/react-0-13-this-getdomnode-equivalent-to-react-finddomnode
