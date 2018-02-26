@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import ContentEditable from './ContentEditable'
 import Display from './Display'
 import ReactAce from 'react-ace-editor';
-import logo from './peer.png';
 import axios from 'axios';
 import io from 'socket.io-client';
 
