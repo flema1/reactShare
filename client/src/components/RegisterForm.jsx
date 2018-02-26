@@ -4,6 +4,13 @@ const RegisterForm = props => {
   return (
     <div className="registerform">
       <form onSubmit={props.handleRegisterSubmit}>
+         <input
+          type="text"
+          name="registerName"
+          value={props.registerName}
+          onChange={props.handleInputChange}
+          placeholder="Name"
+        />
         <input
           type="text"
           name="registerUserName"
@@ -25,14 +32,7 @@ const RegisterForm = props => {
           onChange={props.handleInputChange}
           placeholder="Email"
         />
-        <input
-          type="text"
-          name="registerName"
-          value={props.registerName}
-          onChange={props.handleInputChange}
-          placeholder="Name"
-        />
-        <input type="submit" value="Register!" />
+        <input className={'register-btn'} type="submit" value="REGISTER" />
       </form>
     </div>
   );

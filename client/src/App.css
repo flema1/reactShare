@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+  height: 100%
 }
 
 .App-logo {
@@ -13,7 +14,7 @@
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
+  /*color: white;*/
 }
 
 .App-intro {
@@ -29,10 +30,29 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Code+Pro');
 @import url('https://fonts.googleapis.com/css?family=Catamaran');
 
+
+
+
+@font-face {
+  font-family: 'NEOTERICc';
+  src: local('NEOTERICc'), url(./fonts/NEOTERICc.ttf) format('ttf');
+}
+
+.logo{
+   margin-top:250px; 
+   height:500px; 
+}
+.logo2{
+  color:white;
+  margin-top: -190px;
+  margin-left: -135px; 
+  font-size: 40px;
+}
 .home{
-    height: 745px;
+    /*margin-top: -100px;*/
+    height: 1045px;
     width: 100%;
-    background-image: url("https://www.iasplus.com/en-us/images/responsive/primary/full-bleed/computer-coding-green-screen/image");
+    background-image: url("https://static.pexels.com/photos/209878/pexels-photo-209878.jpeg");
 }
 
 
@@ -46,24 +66,49 @@
 }
 
 .editField{
-    height: 250px; 
+    margin-top: -200px; 
+    height: 350px; 
     overflow: scroll;
+    margin: auto;
+    width: 90%;
     font-family: 'Source Code Pro', monospace;
-    margin-top: -1px;
-    color: #ffffff;
-    border-style:solid;
-    border-color:#01b7ee;
+    /*margin-top: -1px;*/
+       margin-bottom: 15px;
+    /*background: #2f343a; */
+    /*background:#353e53;*/
+    color:white;
+        background:   #353e52
+
 }
 
-.display{
+/*.display{
     background: black;
     height: 250px; 
     overflow: scroll;
     border-style:solid;
     border-color:#01b7ee;
     color: white;
-}
+}*/
+.ace{
+  width:400px; 
+  height:400px; 
+    margin-left: 500px;
 
+}
+.display{
+  height: 100%; 
+    overflow: scroll;
+  
+    /*width: 100%;*/
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f6f8f9+0,e5ebee+50,d7dee3+51,f5f7f9+100;White+Gloss */
+    /*background: #2f343a; */
+    /*background:   #353e52;*/
+    background-color: #fff;
+   
+
+
+}
 .display-saved{
     background: black;
     height: 250px; 
@@ -73,15 +118,21 @@
     color: white;
 }
 
+.nav{
+  margin-top:100px; 
+}
+
 
 .main-nav {
-    background: black;
+    /*background: black;*/
+     color: white;
     width: 100%; 
 }
 
 .sub-nav{
     display: flex;
-    color: #35df79;
+    /*color: #35df79;*/
+    color:#94959b;
     list-style: none;
 }
 
@@ -92,18 +143,39 @@
     justify-content: space-around;
 }
 
-.nav-ul li a {
-    font-family: 'Poppins', sans-serif;
+.nav-ul li a, link {
+    /*font-family: 'Poppins', sans-serif;*/
+    /*font-family: NEOTERICc;*/
+    
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 25px;
     letter-spacing: 4px;
-    color: white;
+    /*color: #ff2fac;*/
+    color: #94959b;
+    /*color: greenyellow;*/
     /*font-family: 'Roboto Mono', monospace;*/
     font-family: 'Catamaran', sans-serif;
 }
+.bm-item-list a {
+    /*font-family: 'Poppins', sans-serif;*/
+    /*font-family: NEOTERICc;*/
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 4px;
+    /*color: #ff2fac;*/
+    color: #94959b;
+    /*color: greenyellow;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-family: 'Catamaran', sans-serif;
+}
+ul{
+  list-style-type: none;
+  margin-left: -39px;
+}
 
-.nav-ul li a:hover {
+.bm-item-list a:hover {
     font-weight: 700;
 }
 
@@ -114,20 +186,33 @@
 }
 
 .room{
+    padding-top: 100px;
+
   background: black;
-  height: 745px;
+  /*height: 745px;*/
+
+  height: 100%;
   width: 100%;
-  padding-top: 130px;
-}
+  /*padding-top: 130px;*/
+  /*box-shadow: 3px 3px 3px #ccc;*/
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e6eefc+0,b7c7f5+25,b7c7f5+25,cdddf9+50,e4e9fc+100 */
+
+
+  }
 .SavedSessions{
-  background: black;
+  /*background: black;*/
+   background: #19B5FE;
   height: 100%;
   width: 100%;
   padding-top: 130px;
 }
 button{
   border: none;
-  color: #01b7ee;
+  /*color: #01b7ee;*/
+    font-family: 'Catamaran', sans-serif;
+
+color: white; 
   background: black;
   font-size: 30px;
   cursor: pointer;
@@ -156,10 +241,12 @@ button{
 
 
 .content-edit{
-   margin-top: -25px;
-   padding-top: 100px;
-   background: black;
+   /*margin-top: -25px;*/
+   /*padding-top: 100px;*/
+   
+   /*background: black;*/
    height: 100vh;
+   background: red; 
 
 }
 
@@ -169,4 +256,302 @@ button{
   background: black;
   font-size: 30px;
   cursor: pointer;
+}
+
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  /*background: #373a47;*/
+    /*background: white; */
+background:white; 
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  /*background: #bdc3c7;*/
+  background: white; 
+}
+
+/* General sidebar styles */
+.bm-menu {
+      /*margin-top: 100px;*/
+
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bob{
+ background: inherit;
+ width: 250px;
+ height: 350px;
+ position: absolute;
+ overflow: hidden;  
+}
+
+bob:before{
+ content: ‘’;
+ width: 300px;
+ height: 400px;
+ background: inherit; 
+ position: absolute;
+ left: -25px; 
+ right: 0;
+ top: -25px;  
+ bottom: 0;
+ box-shadow: inset 0 0 0 200px rgba(255,255,255,0.3);
+ filter: blur(45px);
+}
+
+.session-container {
+  /*background-color:rgb(52, 73, 94);*/
+   /*background: #19B5FE;*/
+   background: #5D8CAE;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /*padding-bottom: 5px;*/
+}
+.session-container button {
+  background: rgb(231, 76, 60);
+  width: 5em;  
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.interface-container {
+  display:flex;
+  flex-direction:column;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: fixed
+}
+
+.display-container {
+  padding:5px;
+  border-radius:5px;
+  background-color:rgb(245, 246, 250);
+  margin-bottom:5px;
+}
+
+
+.login-container {
+  /*background-color:rgb(52, 73, 94);*/
+   background: #19B5FE;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /*padding-bottom: 5px;*/
+  
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+      /*width: 100%;*/
+    padding: 50px 50px 50px 50px;
+    background: white;
+}
+
+
+.login-form-container form input {
+  font-size: 1em;
+    padding: 10px 10px 10px 0px;
+    /*width: 89.87%;*/
+    border: none;
+    border-bottom: 2px solid #999;
+    -webkit-appearance: none;
+    margin-bottom: 2em;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+}
+
+.login-container .tab-list {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 369px;
+  cursor: pointer;
+}
+
+.login-container .tab-list li {
+  margin: 0;
+  padding: 0;
+  float:left;
+  width: 50%;
+  padding: 15px 0;
+  display: inline-block;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.login-container .tab-list .tab-item-2 {
+  float:right;
+  background-color: rgb(231, 76, 60);
+}
+
+.login-container .tab-list .tab-item-1 {
+  float:left;
+  background-color: rgb(52, 152, 219);
+}
+
+.login-btn {
+  background-color: rgb(52, 152, 219);
+  border: solid white;
+  color: #fff;
+}
+
+.register-btn {
+  background-color: rgb(231, 76, 60);
+  border: solid white;
+  color: #fff;
+}
+
+
+.right{
+	width: 0;
+	height: 0;
+	border-bottom: 1000px solid #FCFCFA;
+	border-left: 1200px solid transparent;
+}
+
+.left{
+  background-color:#19B5FE;
+ 
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  /*padding-top: 150px;*/
+;
+
+}
+.left h1{
+   font-family: "Lato", Helvetica, Arial, sans-serif !important;
+   font-weight: 900;
+   font-size: 50px;
+   color: #FCFCFA;
+   text-transform: uppercase;
+   padding-right:20px;
+}
+.left h3{
+  text-transform: uppercase;
+  font-family: "Lato", Helvetica, Arial, sans-serif !important;
+  font-weight:  300;
+  font-size: 50px;
+  line-height: 1em;
+  color: #97d9fc;
+  padding-left:20px;
+  line-height: 1.6em;
+}
+
+.brand-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /*align-content: center;*/
+  justify-content: center;
+}
+
+.verticle{
+  padding-top: 90px;
+  
+    border-left: 2px solid #97d9fc;
+    height: 50px;
+}
+.home-container{
+  position:fixed; 
+  height:100%;
+  width:100%;
+  display: flex;
+background-color:#19B5FE;
+flex-direction: column;
+}
+
+.home-container{
+  flex: 1;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: rgba(255,255,255,0.8);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #19B5FE;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 50px;
+  width: 50px;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #97d9fc;
+}
+
+
+/* Styling of overlay */
+.bm-overlay {
+  background: transparent;
+}
+
+
+
+.bm-item-list a{
+  color: #22A7F0;
+  font-family: "Lato", Helvetica, Arial, sans-serif !important;
 }

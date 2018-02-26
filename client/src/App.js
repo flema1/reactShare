@@ -3,10 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-
 import Auth from './modules/Auth';
 import Nav from './components/Nav';
-import LoginForm from './components/LoginForm';
+import MainForm from './components/MainForm';
 import RegisterForm from './components/RegisterForm';
 import Room from './components/Room';
 import Home from './components/Home'
@@ -15,7 +14,6 @@ import SessionSingle from './components/SessionSingle';
 import SessionEditForm from './components/SessionEditForm';
 import ContentEditable from './components/ContentEditable'
 import Display from './components/Display';
-
 import {
   BrowserRouter as
   Router,
@@ -27,9 +25,6 @@ import {
 import io from 'socket.io-client';
 var __lastHTML="null";
 
-
-
-
 class App extends Component {
 
     constructor(props) {
@@ -38,19 +33,10 @@ class App extends Component {
     this.state = {
       auth: Auth.isUserAuthenticated(),
       shouldFireRedirect: false,
-      loginUserName: '',
-      loginPassword: '',
-      registerUserName: '',
-      registerPassword: '',
-      registerEmail: '',
-      registerName: '',
       username:'',
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.resetFireRedirect = this.resetFireRedirect.bind(this);
   }
  
@@ -70,69 +56,11 @@ class App extends Component {
     }
  }
 
-
-handleInputChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  handleLoginSubmit(e) {
-    e.preventDefault();
-    axios.post('auth/login', {
-      username: this.state.loginUserName,
-      password: this.state.loginPassword,
-    }).then(res => {
-      console.log(res);
-      if (res.data.token) {
-        Auth.authenticateToken(res.data.token);
-        this.setState({
-          auth: Auth.isUserAuthenticated(),
-          username: res.data.username,
-          loginUserName: '',
-          loginUserPassword: '',
+updateAuth(token){
+   this.setState({
+         auth: token
         })
-        console.log(this.state)
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
-  handleRegisterSubmit(e) {
-    e.preventDefault();
-    console.log (
-      this.state.registerUserName,
-      this.state.registerEmail,
-      this.state.registerPassword,
-      this.state.registerName,   
-
-    )
-    axios.post('auth/register', {
-      user: {
-      username: this.state.registerUserName,
-      email: this.state.registerEmail,
-      password: this.state.registerPassword,
-      name: this.state.registerName 
-    }
-    
-    }).then(res => {
-       console.log(res,'<---res')
-       
-      if (res.data.token) {
-        console.log(res.data.token)
-        Auth.authenticateToken(res.data.token);
-        this.setState({
-          auth: Auth.isUserAuthenticated(),
-        })
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
+}
 
 
   resetFireRedirect() {
@@ -164,18 +92,14 @@ handleInputChange(e) {
     return (
       <Router>
           <div className="App">
-              <Nav logoutUser={this.logoutUser} />
+              <Nav className='nav'logoutUser={this.logoutUser} />
                 {/*Logged in as: {this.state.username}*/}
               <Route exact path="/" component={Home}/>
               <Route exact path="/login"
                 render={() =>
                   !this.state.auth ? (
-                    <LoginForm
-                      auth={this.state.auth}
-                      loginUserName={this.state.loginUsername}
-                      loginPassword={this.state.loginPassword}
-                      handleInputChange={this.handleInputChange}
-                      handleLoginSubmit={this.handleLoginSubmit}
+                    <MainForm
+                      updateAuth={this.updateAuth.bind(this)}
                     />
                   ) : (
                     <Redirect to="/room" component={Room}/>
@@ -194,7 +118,6 @@ handleInputChange(e) {
                     <Redirect to="/login" />
                   )}
               />
-            
               <Route exact path="/session/:id" component={SessionSingle} />
               <Route exact path="/edit/:id" component={SessionEditForm} />
               <Route
@@ -206,27 +129,7 @@ handleInputChange(e) {
                   ) : (
                     <Redirect to="/login" />
                   )}
-              />
-
-              <Route
-                exact
-                path="/register"
-                render={() =>
-                  !this.state.auth ? (
-                    <RegisterForm
-                      auth={this.state.auth}
-                      registerUserName={this.state.registerUsername}
-                      registerPassword={this.state.registerPassword}
-                      registerEmail={this.state.registerEmail}
-                      registerName={this.state.registerName}
-                      handleInputChange={this.handleInputChange}
-                      handleRegisterSubmit={this.handleRegisterSubmit}
-                    />
-                  ) : (
-                    <Redirect to="/dash" />
-                  )}
-              />
-            
+              />            
           </div>
     </Router>
     );
